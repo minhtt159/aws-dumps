@@ -22,6 +22,9 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
+  valuesFrom:
+    - kind: ConfigMap
+      name: ingress-nginx-external-helm-values
   values:
     # https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml
     fullnameOverride: *name
