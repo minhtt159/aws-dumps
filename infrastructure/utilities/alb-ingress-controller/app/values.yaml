@@ -1,4 +1,4 @@
-clusterName: ${CLUSTER_NAME}
+clusterName: "${CLUSTER_NAME}"
 region: ${REGION}
 vpcId: ${VPC_ID}
 serviceAccount:
