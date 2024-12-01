@@ -1,0 +1,52 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &name external-dns
+spec:
+  releaseName: *name
+  chart:
+    spec:
+      chart: *name
+      version: "1.14.5"
+      sourceRef:
+        kind: HelmRepository
+        name: external-dns
+        namespace: flux-system
+  interval: 50m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  valuesFrom:
+    - kind: ConfigMap
+      name: external-dns-helm-values
+  values:
+    # https://github.com/kubernetes-sigs/external-dns/blob/master/charts/external-dns/values.yaml
+    nodeSelector:
+      tf-node-group: default-ng
+    serviceAccount:
+      create: true
+    rbac:
+      # https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/traefik-proxy.md#additional-flags
+      create: true
+    provider:
+      name: aws
+    sources:
+      # Ingress object
+      - ingress
+      # Service object
+      - service
+    policy: sync
+    registry: txt
+    txtPrefix: "dns-tf-"
+    interval: 1m
+    logLevel: info
+    logFormat: text
+    extraArgs:
+      - "--aws-zone-type=public"
+      - "--aws-api-retries=3"
+      - "--aws-batch-change-size=100"
