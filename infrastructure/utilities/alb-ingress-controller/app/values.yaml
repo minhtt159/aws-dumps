@@ -1,26 +1,6 @@
-clusterName: ENC[AES256_GCM,data:1/CEUCQTKxXEw71ntll8ppg=,iv:dzkp8r1vuZ5sY7aNw9k628zadtgV052074tGbh3Pm4g=,tag:9yDQPZfe8yPiYeZx8s/1NA==,type:str]
-region: ENC[AES256_GCM,data:oioyEyEiL8vpTian,iv:KM2ojLwpTs6yJA0diLh//hChelnVfFRAx5W/0jZsUzE=,tag:vKWU6QUiMaOp4tWbMv33Gw==,type:str]
-vpcId: ENC[AES256_GCM,data:roXzaPwZ4jN5v4oxUrkmy8IHvg+e,iv:XuWi6bg/e28up4v0JE4V/YNNvRtYLxZCxAQeTNSVnnU=,tag:kvAeB4s7jzMc/XCqTPw5Qg==,type:str]
+clusterName: ${CLUSTER_NAME}
+region: ${REGION}
+vpcId: ${VPC_ID}
 serviceAccount:
-    annotations:
-        eks.amazonaws.com/role-arn: ENC[AES256_GCM,data:xKoQW2WVnoWgOyjywGUI46r3jGTwVXo46jYrgbbqh70X7SYVy+Sf7i9yj/406coaRrtbY58+tr+Av1o=,iv:jg6dAzkyP6I/qAl4zB/Mnop3k53uAv5/Z6Dc1Slzjdw=,tag:rFDlVUcGvdqXgCW0jD7GUQ==,type:str]
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age:
-        - recipient: age18npnmueg5rplkxv6gvauz6qkjs3kukxhuuk4ugnlkkpu39k4zgqq7u2vde
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBYY3JTOXM3czY2T3VPRTlh
-            dkRpUTR5M0E0ays0U29mRnRWcjYzcUVIMHhrCkd2a1Rpd1BQcU5USk80VnJKSG1y
-            cGd3U09pcVVNcGZFTjEwYVdFYnZsS3MKLS0tIGQ0Vlk5a1gvMFplcXBvNXhibGhN
-            Rlo1cnBWeTQrdGg1cDM1S090TS8xbGcKZ8wmTI2Gu0KsCqb8o5+iceHSlIQqoBZH
-            N15WrS3o7keQpUYZeP/k3oEVbghTTIEUdQpYWZcHSveLAjUCj22upQ==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-12-01T01:09:36Z"
-    mac: ENC[AES256_GCM,data:1IpC63ejoc6YS0SSKZOOI/dp0cf1MVKNJtpnOf4yTeM8fxBpgVxwAOU8Wi5BZ8ktcrhKXIyV3kCufW70LDD1Ygxa6718RI2cKarQEuuMPd1HYuk3uqjTGct4n3a+aiXNjYipoPXLLkQBZyVZNeL5RV2k438hV7YeWKTGoRgPoUg=,iv:0AtZP/XmDu/+YKQAwz4w0XKa5w2WPbYOfsII5GtreRY=,tag:ioQ8tk8RVDKU0sxhgMPEFQ==,type:str]
-    pgp: []
-    unencrypted_suffix: _unencrypted
-    version: 3.9.1
+  annotations:
+    eks.amazonaws.com/role-arn: ${ALB_ROLE}
