@@ -38,5 +38,5 @@ controller:
       service.beta.kubernetes.io/aws-load-balancer-name: "${CLUSTER_NAME}-internal"
       service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "${ACM_ARN}"
       service.beta.kubernetes.io/aws-load-balancer-subnets: "${PUBLIC_SUBNETS}"
-  defaultBackend:
-    enabled: true
+defaultBackend:
+  enabled: true
