@@ -6,6 +6,6 @@ resources:
 configMapGenerator:
   - name: alb-helm-values
     files:
-      - values.yaml=./helm-values.yaml
+      - values.yaml=./values.yaml
 configurations:
   - kustomizeconfig.yaml
