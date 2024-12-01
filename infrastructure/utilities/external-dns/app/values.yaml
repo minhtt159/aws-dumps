@@ -1,5 +1,5 @@
 serviceAccount:
   annotations:
-    eks.amazonaws.com/role-arn: ${DNS_ROLE}
+    eks.amazonaws.com/role-arn: "${DNS_ROLE}"
 domainFilters:
-  - ${DNS_ZONE}
+  - "${DNS_ZONE}"

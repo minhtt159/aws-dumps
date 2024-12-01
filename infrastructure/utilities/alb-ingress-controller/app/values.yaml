@@ -1,6 +1,6 @@
 clusterName: "${CLUSTER_NAME}"
-region: ${REGION}
-vpcId: ${VPC_ID}
+region: "${REGION}"
+vpcId: "${VPC_ID}"
 serviceAccount:
   annotations:
-    eks.amazonaws.com/role-arn: ${ALB_ROLE}
+    eks.amazonaws.com/role-arn: "${ALB_ROLE}"
