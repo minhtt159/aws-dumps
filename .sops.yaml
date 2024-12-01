@@ -1,0 +1,11 @@
+---
+creation_rules:
+  - path_regex: .*(secret|values)\.ya?ml
+    key_groups:
+      - age:
+          - "age18npnmueg5rplkxv6gvauz6qkjs3kukxhuuk4ugnlkkpu39k4zgqq7u2vde"
+  - path_regex: .*secret-manifest\.ya?ml
+    encrypted_regex: "^(data|stringData)$"
+    key_groups:
+      - age:
+          - "age18npnmueg5rplkxv6gvauz6qkjs3kukxhuuk4ugnlkkpu39k4zgqq7u2vde"
