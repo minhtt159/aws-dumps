@@ -1,0 +1,42 @@
+# https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml
+controller:
+  config:
+    hsts: true
+    proxy-body-size: 10m
+    force-ssl-redirect: true
+    # To preserve the client IP
+    enable-real-ip: true
+    use-proxy-protocol: true
+    use-forwarded-headers: true
+    # compute-full-forwarded-for: true
+    # proxy-real-ip-cidr: "0.0.0.0/0" # "10.26.0.0/16"
+  allowSnippetAnnotations: true
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 3
+    # https://github.com/kubernetes/ingress-nginx/issues/10371
+    targetMemoryUtilizationPercentage: 75
+    behavior:
+      scaleDown:
+        stabilizationWindowSeconds: 300
+        policies:
+          - type: Pods
+            value: 1
+            periodSeconds: 180
+      scaleUp:
+        stabilizationWindowSeconds: 300
+        policies:
+          - type: Pods
+            value: 2
+            periodSeconds: 60
+  # Controller service
+  service:
+    loadBalancerSourceRanges: ${INTERNAL_NGINX_WHITE_LISTS}
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: "internal.${DNS_ZONE}"
+      service.beta.kubernetes.io/aws-load-balancer-name: "${CLUSTER_NAME}-internal"
+      service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "${ACM_ARN}"
+      service.beta.kubernetes.io/aws-load-balancer-subnets: "${PUBLIC_SUBNETS}"
+  defaultBackend:
+    enabled: true
