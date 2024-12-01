@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./alb-ingress-controller/ks.yaml
+  - ./external-dns/ks.yaml
