@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: appgwingress
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://appgwingress.blob.core.windows.net/ingress-azure-helm-package
